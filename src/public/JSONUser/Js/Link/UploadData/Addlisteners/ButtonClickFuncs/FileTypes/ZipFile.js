@@ -4,7 +4,8 @@ let StartFunc = async () => {
     let jvarLocalJSONData = {};
     let jVarLocalSelectFileId = document.getElementById("SelectFileId");
     let jVarLocalSelectedFile = jVarLocalSelectFileId.files[0];
-    fileValidation(jVarLocalSelectedFile);
+    let jVarFromValodation =fileValidation(jVarLocalSelectedFile);
+    console.log("dssd",jVarFromValodation);
     let jVarLocalFromFile = await jVarLocalreadFileAsync(jVarLocalSelectedFile);
     jvarLocalJSONData.JsonReports = JSON.parse(jVarLocalFromFile);
 

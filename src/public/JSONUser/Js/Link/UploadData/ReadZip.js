@@ -104,14 +104,14 @@ const jFSelectChange = (evt) => {
         console.log("ttttttttttt : ", files[0]);
         formData.append("inFile", files[0]);
 
-        fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
-            method: "post",
-            body: formData
-        }).catch((upError) => {
-            console.log("upError ", upError);
-        });
+    //    fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
+    //         method: "post",
+    //         body: formData
+    //     }).catch((upError) => {
+    //         console.log("upError ", upError);
+    //     });
 
-        jFLocalhandleFile(files[0]);
+       jFLocalhandleFile(files[0]);
     };
 
 
@@ -131,6 +131,33 @@ const jFSelectChange = (evt) => {
     // };
 };
 
-// jFStart();
+const jFUpLoadButtonClick = (evt) => {
+    console.log("evt ", evt);
+    // remove content
+    $result.innerHTML = "";
+    // be sure to show the results
+    document.getElementById("result_block").classList.remove("hidden");
+    document.getElementById("result_block").classList.add("show");
+
+    var files = evt.target.files;
+
+    if (files.length === 1) {
+        //allow only file to upload............
+        const formData = new FormData();
+        console.log("ttttttttttt : ", files[0]);
+        formData.append("inFile", files[0]);
+
+        fetch("/JSONUser/Login/Users/Admin/ShowUsers/WithFolderCheck", {
+            method: "post",
+            body: formData
+        }).catch((upError) => {
+            console.log("upError ", upError);
+        });
+
+        jFLocalhandleFile(files[0]);
+    };
+
+};
+
 
 export { jFSelectChange };
