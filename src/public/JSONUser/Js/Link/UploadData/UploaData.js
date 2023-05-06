@@ -3,11 +3,8 @@ import { StartFunc as StartAddlisteners } from "./Addlisteners/StartFuncs.js";
 
 let StartFunc = async () => {
     StartFuncShowData().then((params) => {
-        StartAddlisteners()
-
-    }
-    );
-
+        StartAddlisteners();
+    });
 };
 
 StartFunc();
