@@ -1,4 +1,4 @@
-import { ReturnUserPK } from "./urlSearchParams.js";
+import { ReturnUserPK } from "../urlSearchParams.js";
 
 let StartFunc = () => {
     let LocalFromUrlSearchParams = ReturnUserPK();
@@ -10,7 +10,6 @@ let StartFunc = () => {
         LocalFromDomUserName.focus();
     }
 
-    console.log("LocalFromUrlSearchParams : ", LocalFromUrlSearchParams, LocalFromUrlSearchParams == null);
     let jVarLocalSaveButtonid = document.getElementById("SaveButtonid");
     jVarLocalSaveButtonid.addEventListener("click", jFSave);
 };
@@ -47,8 +46,7 @@ let jFSave = async () => {
     let data = await response.json();
 
     if (data.KTF) {
-        //jVarLocalApiFuncs.ShowData();
-        window.location = "Show.html";
+        window.location = "../Customers/Show.html";
     } else {
         Swal.fire(
             data.KReason
@@ -57,4 +55,4 @@ let jFSave = async () => {
     return data;
 };
 
-StartFunc();
+export { StartFunc };
