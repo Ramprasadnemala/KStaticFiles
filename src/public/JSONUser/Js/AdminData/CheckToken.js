@@ -25,7 +25,7 @@ let StartFunc = ({ inUserKey, inFirmKey, inTokenName, inModalId }) => {
         document.getElementById('NavBarId').classList.add("bg-danger");
         document.getElementById('NavBarId').classList.remove("bg-dark");
 
-        LocalDeleteCookie({ inTokenName });
+       LocalDeleteCookie({ inTokenName });
 
         let jVarLocalId = inModalId;
 
