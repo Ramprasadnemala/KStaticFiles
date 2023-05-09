@@ -21,6 +21,7 @@ let LocalShowDataFunc = async ({ inData }) => {
     // );
 
     let jVarGlobalPresentViewData = inData;
+    console.log("jVarGlobalPresentViewData:",jVarGlobalPresentViewData);
     document.getElementById("KTableBodyId").innerHTML = Handlebars.compile(jVarLocalRawTemplate)(jVarGlobalPresentViewData);
 };
 
