@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <title>TabularColumnsData</title>
+    <!-- Custom styles for this template -->
+    <include src="./src/components/Templates/Admin/Columns/HeaderCss.html"></include>
+
+</head>
+
+<body class="mb-5">
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="bootstrap" viewBox="0 0 118 94">
+            <title>Bootstrap</title>
+            <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z">
+            </path>
+        </symbol>
+    </svg>
+
+    <include src="./src/components/Templates/Admin/Columns/Tabular/ReturnData/Table/Header.html"></include>
+
+    <main>
+        <div class="container">
+            <div id="KCont1">
+            </div>
+        </div>
+
+    </main>
+
+    <include src="./src/components/Templates/Admin/Columns/Tabular/ReturnData/Footer.html"></include>
+
+    <!-- LOGIN  STARTED -->
+    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate="">
+                        <div class="mb-3 form-floating is-valid">
+                            <input type="text" class="form-control" id="KUserNameInput" required="">
+                            <label for="KUserNameInput">User Name</label>
+                            <div class="invalid-feedback">
+                                User Name cannot be empty.
+                            </div>
+                        </div>
+                        <div class="mb-3 form-floating">
+                            <input type="password" class="form-control" id="KPasswordInput" required="">
+                            <label for="KPasswordInput">Password</label>
+                            <div class="invalid-feedback">
+                                Password cannot be empty.
+                            </div>
+                        </div>
+                        <input type="submit" id="LoginModalButtonId" class=" btn btn-primary">
+                        <!-- <button type="button" class="btn btn-primary"
+                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
+                         -->
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- LOGIN FINISHED -->
+
+    <script src="/ClassesStatic/CommonClass.js"></script>
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
+
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFoldersOnly.html"></include>
+
+
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForFilesOnly.html"></include>
+
+    <include src="./src/components/Templates/Admin/Columns/Tabular/HbsTemplates/ForItemsOnly.html"></include>
+
+
+    <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>ScreenName</th>
+                    <th>KTF</th>
+                    <th>DataType</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.Screens}}
+                {{log "inside" this}}
+                <tr>
+                    <td class="text-center">
+                        {{ForSNo @index}}
+                    </td>
+                    <td>
+                        {{this.ScreenName}}
+                    </td>
+                    
+                    <td>
+                        <div class="form-check  form-switch">
+                            {{#if ReturnDataJsonContent.Vertical.Footer.Save.ReturnData.KTF}}
+                            <input class="form-check-input" type="checkbox" name="KTF" checked>
+                            {{else}}
+                            <input class="form-check-input" type="checkbox" name="KTF">
+                            {{/if}}
+                        </div>
+                    </td>
+                    <td>
+                        <input class="form-control" type="text" name="ColClass" value="{{ReturnDataJsonContent.Vertical.Footer.Save.ReturnData.DataType}}" >
+
+                    </td>
+                    
+                    <td>
+                        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../key}}" data-filename="{{@../../key}}" data-itemname="{{@../key}}" data-screenname="{{ScreenName}}">
+                            Update
+                        </button>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+       
+        </table>
+      </script>
+
+
+    <script id="HbsTemplateForScreensOnly11" type="text/x-handlebars">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="5%"></th>
+                    <th width="90%"></th>
+                    <th width="5%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each this.Screens}}
+              
+    <tr class="{{RowClass}}">
+    <td class="text-center">
+    {{ForSNo @index}}
+    </td>
+    <td>
+    
+    <div class="row mb-3">
+        <div class="col row">
+            <label class="col-md-8 col-form-label">KTF</label>
+            <div class="col-4">
+                <div class="form-check  form-switch">
+                    {{#if KTF}}
+                    <input class="form-check-input" type="checkbox" name="KTF" checked>
+                    {{else}}
+                    <input class="form-check-input" type="checkbox" name="KTF">
+                    {{/if}}
+                </div>
+            </div>
+        </div>
+        <div class="col row">
+            <label class="col-md-6 col-form-label">DisplayText</label>
+            <div class="col-6">
+                <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
+            </div>
+        </div>
+    </div>
+    
+    <div class="row mb-3">
+        <div class="col row">
+            <label class="col-md-8 col-form-label">ColClass</label>
+            <div class="col-7">
+                <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
+            </div>
+        </div>
+       
+    </div>
+    </td>
+    <td>
+    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
+        Update
+    </button>
+    </td>
+    </tr>
+    
+                {{/each}}
+            </tbody>
+        </table>
+    
+        </script>
+
+    <script>
+        //HbsTemplateForScreensWithSubTableColumnsOnly
+        class jClassForHbs {
+            static FillPartialFromScriptInHtml = ({ inHtmlHbsScriptId }) => {
+                let jVarLocalHbsTemplate = document.getElementById(inHtmlHbsScriptId);
+
+                if (jVarLocalHbsTemplate !== null) {
+                    Handlebars.registerPartial(inHtmlHbsScriptId, jVarLocalHbsTemplate.innerHTML);
+                };
+            };
+        };
+
+        let jVarLocalHbsTemplateForSubTableColumns = document.getElementById("HbsTemplateForSubTableColumns");
+        let jVarLocalHbsTemplateForColumns = document.getElementById("HbsTemplateForColumns");
+
+        let jVarLocalHbsTemplateForFiles = document.getElementById("HbsTemplateForFilesOnly");
+        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForScreensOnly" });
+        jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForItemsOnly" });
+
+        let jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly = document.getElementById("HbsTemplateForScreensWithSubTableColumnsOnly");
+        let jVarLocalHbsTemplateForColumnsForTogglesOnly = document.getElementById("HbsTemplateForColumnsForTogglesOnly");
+        let jVarLocalHbsTemplateForTableColumnsForTogglesOnly = document.getElementById("HbsTemplateForTableColumnsForTogglesOnly");
+
+        // jClassForHbs.FillPartialFromScriptInHtml({ inHtmlHbsScriptId: "HbsTemplateForTableColumnsForAllInOneWithValuesOnly" });
+
+        let jVarLocalHbsTemplateForTable = document.getElementById("HbsTemplateForTable");
+
+        Handlebars.registerHelper('ForSNo', function (item) {
+            return item + 1;
+        });
+
+        if (jVarLocalHbsTemplateForSubTableColumns !== null) {
+            Handlebars.registerPartial("HbsTemplateForSubTableColumns", jVarLocalHbsTemplateForSubTableColumns.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForColumns !== null) {
+            Handlebars.registerPartial("HbsTemplateForColumns", jVarLocalHbsTemplateForColumns.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForFiles !== null) {
+            Handlebars.registerPartial("HbsTemplateForFilesOnly", jVarLocalHbsTemplateForFiles.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForScreensWithSubTableColumnsOnly", jVarLocalHbsTemplateForScreensWithSubTableColumnsOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForColumnsForTogglesOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForColumnsForTogglesOnly", jVarLocalHbsTemplateForColumnsForTogglesOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForTableColumnsForTogglesOnly !== null) {
+            Handlebars.registerPartial("HbsTemplateForTableColumnsForTogglesOnly", jVarLocalHbsTemplateForTableColumnsForTogglesOnly.innerHTML);
+        };
+
+        if (jVarLocalHbsTemplateForTable !== null) {
+            Handlebars.registerPartial("HbsTemplateForTable", jVarLocalHbsTemplateForTable.innerHTML);
+        };
+    </script>
+
+
+    <script>
+        let jFChangeHeaderActiveClass = () => {
+            let jVarLocalPathArray = window.location.pathname.split("/");
+            let jVarLocalHTMLName = jVarLocalPathArray[jVarLocalPathArray.length - 1];
+            jFChangeNavAnchorClass({ inClassName: jVarLocalHTMLName.split(".")[0] });
+        };
+
+        let jFChangeNavAnchorClass = ({ inClassName }) => {
+            let jVarLocalNavBarId = document.getElementById("NavBarId");
+            let jVarLocalAnchorNeeded = jVarLocalNavBarId.querySelector(`.${inClassName}AClass`);
+
+            if (jVarLocalAnchorNeeded !== null) {
+
+                if (jVarLocalAnchorNeeded.classList.contains("text-white")) {
+                    jVarLocalAnchorNeeded.classList.remove("text-white");
+                };
+
+                jVarLocalAnchorNeeded.classList.add("text-info");
+            };
+        };
+
+        jFChangeHeaderActiveClass();
+    </script>
+
+    <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../../../Js/Login/Check.js" type="module"></script>
+
+    <script src="../../../../../../Js/Columns/Tabular/ReturnData/Vertical/Footer/Footer.js" type="module"></script>
+
+
+</body>
+
+</html>
