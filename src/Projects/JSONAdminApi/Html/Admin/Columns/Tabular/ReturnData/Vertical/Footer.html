@@ -103,8 +103,7 @@
             </thead>
             <tbody>
                 {{#each this.Screens}}
-                {{log "inside" this}}
-                <tr>
+                <tr class="{{RowClass}}">
                     <td class="text-center">
                         {{ForSNo @index}}
                     </td>
@@ -122,7 +121,7 @@
                         </div>
                     </td>
                     <td>
-                        <input class="form-control" type="text" name="ColClass" value="{{ReturnDataJsonContent.Vertical.Footer.Save.ReturnData.DataType}}" >
+                        <input class="form-control" type="text" name="DataType" value="{{ReturnDataJsonContent.Vertical.Footer.Save.ReturnData.DataType}}" >
 
                     </td>
                     
@@ -139,67 +138,7 @@
       </script>
 
 
-    <script id="HbsTemplateForScreensOnly11" type="text/x-handlebars">
-        <table class="table">
-            <thead>
-                <tr>
-                    <th width="5%"></th>
-                    <th width="90%"></th>
-                    <th width="5%"></th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each this.Screens}}
-              
-    <tr class="{{RowClass}}">
-    <td class="text-center">
-    {{ForSNo @index}}
-    </td>
-    <td>
     
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">KTF</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if KTF}}
-                    <input class="form-check-input" type="checkbox" name="KTF" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="KTF">
-                    {{/if}}
-                </div>
-            </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-6 col-form-label">DisplayText</label>
-            <div class="col-6">
-                <input class="form-control" type="text" name="DisplayText" value="{{DisplayText}}" >
-            </div>
-        </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ColClass</label>
-            <div class="col-7">
-                <input class="form-control" type="text" name="ColClass" value="{{ColClass}}" >
-            </div>
-        </div>
-       
-    </div>
-    </td>
-    <td>
-    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
-        Update
-    </button>
-    </td>
-    </tr>
-    
-                {{/each}}
-            </tbody>
-        </table>
-    
-        </script>
 
     <script>
         //HbsTemplateForScreensWithSubTableColumnsOnly

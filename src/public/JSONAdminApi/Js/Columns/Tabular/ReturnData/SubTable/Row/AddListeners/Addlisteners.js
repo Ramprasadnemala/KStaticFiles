@@ -14,19 +14,19 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalscreenname = jVarLocalCurrentTarget.dataset.screenname;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalKTF = jVarLocalColsestTr.querySelector('[name="TransformToUi"]');
-    let jVarLocalDisplayText = jVarLocalColsestTr.querySelector('[name="TransformFromReports"]');
+    let jVarLocalKTF = jVarLocalColsestTr.querySelector('[name="KTF"]');
+    let jVarLocalDataType = jVarLocalColsestTr.querySelector('[name="DataType"]');
 
     let jVarLocalKTFValue = jVarLocalKTF.checked;
-    let jVarLocalDisplayTextValue = jVarLocalDisplayText.checked;
+    let jVarLocalDataTypeValue = jVarLocalDataType.value;
 
     let BodyAsJson = {
-        TransformToUi: jVarLocalKTFValue,
-        TransformFromReports: jVarLocalDisplayTextValue
+        KTF: jVarLocalKTFValue,
+        DataType: jVarLocalDataTypeValue
     }
 
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableInfo/SubMenu/TableInfoServerSide/FromKeys";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ConfigFolder/FromReturnData/SubTable/Row";
 
     let response = await fetch(jFetchUrl, {
         method: "PATCH",

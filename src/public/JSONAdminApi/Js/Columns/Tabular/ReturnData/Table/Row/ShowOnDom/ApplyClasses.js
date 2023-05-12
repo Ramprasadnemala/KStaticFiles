@@ -72,7 +72,9 @@ let jFLocalApplyClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
     let jVarLocalFileName = inQueryParamsAsObject.inFileName;
     let jVarLocalItemName = inQueryParamsAsObject.inItemName;
     let jVarLocalScreenName = inQueryParamsAsObject.inScreenName;
-    let jVarLocalColumnName = inQueryParamsAsObject.inColumnName;
+
+    Swal.fire(`${jVarLocalScreenName} Screen Updated Sucessfully .&#128522`)
+
 
     if ("Folders" in indataFromApi) {
         if (jVarLocalFolderName in indataFromApi.Folders) {
@@ -91,14 +93,8 @@ let jFLocalApplyClassesFromUrl = ({ indataFromApi, inQueryParamsAsObject }) => {
                             if ("Screens" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName]) {
                                 if (jVarLocalScreenName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens) {
                                     indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].CollapseClass = " show";
+                                    indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].RowClass = "table-success";
 
-                                    if ("TableColumnsObject" in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName]) {
-                                        if (jVarLocalColumnName in indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].TableColumnsObject) {
-                                            indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].TableColumnsObject[jVarLocalColumnName].RowClass = "table-success";
-
-                                            //                                                        console.log("--------- : ", jVarLocalColumnName, indataFromApi.Folders[jVarLocalFolderName].Files[jVarLocalFileName].Items[jVarLocalItemName].Screens[jVarLocalScreenName].TableColumnsObject[jVarLocalColumnName]);
-                                        };
-                                    };
                                 };
                             };
                         };
