@@ -21,7 +21,8 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCreateNew = jVarLocalColsestTr.querySelector('[name="CreateNew"]');
     let jVarLocalIsTextArea = jVarLocalColsestTr.querySelector('[name="IsTextArea"]');
     let jVarLocalShowTotal = jVarLocalColsestTr.querySelector('[name="ShowTotal"]');
-    console.log("jVarLocalShowTotal : ", jVarLocalShowTotal);
+    let jVarLocalEnterToServer = jVarLocalColsestTr.querySelector('[name="EnterToServer"]');
+    
     let jVarLocalDataAttributeValue = jVarLocalDataAttribute.value;
     let jVarLocalDisplayNameValue = jVarLocalDisplayName.value;
     let jVarLocalShowInTableValue = jVarLocalShowInTable.checked
@@ -29,6 +30,7 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalCreateNewValue = jVarLocalCreateNew.checked
     let jVarLocalIsTextAreaValue = jVarLocalIsTextArea.checked
     let jVarLocalShowTotalValue = jVarLocalShowTotal.checked
+    let jVarLocalEnterToServerValue = jVarLocalEnterToServer.checked
 
     let BodyAsJson = {
         DisplayName: jVarLocalDisplayNameValue,
@@ -36,7 +38,8 @@ let jFLocalClickFunc = async (event) => {
         Insert: jVarLocalInsertValue,
         CreateNew: jVarLocalCreateNewValue,
         IsTextArea: jVarLocalIsTextAreaValue,
-        ShowTotal: jVarLocalShowTotalValue
+        ShowTotal: jVarLocalShowTotalValue,
+        EnterToServer: jVarLocalEnterToServerValue
     }
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/Toggles";
