@@ -1,4 +1,4 @@
-let StartFunc = async ({ inHtmlSelect }) => {
+let StartFunc = async ({ inHtmlSelect, DataPk }) => {
     let jVarLocalSelectedFile = inHtmlSelect;
     let jVarLocalFromValidation = fileValidation(jVarLocalSelectedFile);
 
@@ -14,15 +14,7 @@ let StartFunc = async ({ inHtmlSelect }) => {
         });
 
         if (response.status === 200) {
-            Swal.fire({
-                title: 'Data Uploaded Sucessfully..',
-                confirmButtonText: 'ok',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location.href = ""
-
-                }
-            })
+            window.location = `/JSONUser/Html/Link/UploadData.html?UploadData=true&Datapk=${DataPk}`
         } else {
             Swal.fire('Data Not Uploaded')
 

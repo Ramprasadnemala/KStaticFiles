@@ -8,10 +8,12 @@ let ButtonClickFunc = async (event) => {
     let jVarLocalFileSelect = jVarLocalClosestTr.querySelector(".SelectFileClass");
     let jvarLocalJSONData = {};
     let jVarLocalSelectedFile = jVarLocalFileSelect.files[0];
+    let LocalDataPk = jVarLocalCurrentTarget.dataset.datapk;
+
 
     switch (jVarLocalSelectedFile.type) {
         case "application/x-zip-compressed":
-            StartFuncZipFile({ inHtmlSelect: jVarLocalSelectedFile });
+            StartFuncZipFile({ inHtmlSelect: jVarLocalSelectedFile, DataPk: LocalDataPk });
 
             break;
 

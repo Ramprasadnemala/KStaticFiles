@@ -1,3 +1,5 @@
+import { jFStartFunc as jFStartFuncApplyClasses } from "./ApplyClasses.js";
+
 let StartFunc = async () => {
     let jVarLocalUrl = `/JSONUser/Admin/UserFolder/FromUpload/ShowDatas`;
     let response = await fetch(jVarLocalUrl);
@@ -5,6 +7,7 @@ let StartFunc = async () => {
 
     if (data.KTF) {
         LocalShowDataFunc({ inData: data.FolderData });
+        jFStartFuncApplyClasses();
     };
 };
 
