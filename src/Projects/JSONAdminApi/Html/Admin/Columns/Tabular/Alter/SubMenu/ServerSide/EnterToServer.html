@@ -26,7 +26,7 @@
         </symbol>
     </svg>
 
-    <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Header.html"></include>
+    <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/SubMenu/ServerSide/Header.html"></include>
 
     <main>
         <div class="container">
@@ -34,13 +34,15 @@
             </div>
         </div>
 
-        <datalist id="DefaultValueDataList">
-            <option value="Object"></option>
+        <datalist id="formcontrolDataList">
+            <option value="form-control"></option>
         </datalist>
+     
+        <datalist id="TypeDataList">
+            <option value="Number"></option>
+            <option value="Unique"></option>
+            <option value="Decimal"></option>
 
-        <datalist id="TextAlignDataList">
-            <option value="Right"></option>
-            <option value="Left"></option>
         </datalist>
     </main>
 
@@ -71,7 +73,7 @@
                             </div>
                         </div>
                         <input type="submit" class=" btn btn-primary" id="LoginModalButtonId">
-                        
+                       
                     </form>
                 </div>
             </div>
@@ -133,7 +135,7 @@
       </script>
 
 
-      <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
+    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
@@ -144,120 +146,99 @@
             </thead>
             <tbody>
                 {{#each TableColumnsObject}}
+              
     <tr class="{{RowClass}}">
     <td class="text-center">
     {{ForSNo @index}}
     </td>
     <td>
-    <div class="row mb-3">
-        <div class="col-12 col-xl-6">
-                                <div class="row">
-            <label class="col-md-5 col-form-label">DataAttribute</label>
-        <div class="col-7">
-            <input class="form-control" type="text" name="DataAttribute" disabled value="{{DataAttribute}}">
-        </div>
-    
-    </div>
-    
-        </div>
-        <div class="col-12 col-xl-6">
-            
-        <div class="row">
-            <label class="col-md-5 col-form-label">DisplayName</label>
+        <div class="row mb-3">
+            <div class="col-12 col-xl-6">
+                                    <div class="row">
+                <label class="col-md-5 col-form-label">DataAttribute</label>
             <div class="col-7">
-                <input class="form-control" type="text" name="DisplayName" value="{{DisplayName}}" >
+                <input class="form-control" type="text" name="DataAttribute" disabled value="{{DataAttribute}}">
             </div>
+        
         </div>
-    
-    </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ShowInTable</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if ShowInTable}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="ShowInTable">
-                    {{/if}}
+        
+            </div>
+            <div class="col-12 col-xl-6">
+                
+            <div class="row">
+                <label class="col-md-5 col-form-label">DisplayName</label>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="DisplayName" disabled value="{{DisplayName}}" >
                 </div>
             </div>
+        
         </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">Insert</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if Insert}}
-                    <input class="form-check-input" type="checkbox" name="Insert" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="Insert">
-                    {{/if}}
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col row">
+                <label class="col-md-8 col-form-label">Active</label>
+                <div class="col-4">
+                    <div class="form-check  form-switch">
+                        {{#if Active}}
+                        <input class="form-check-input" type="checkbox" name="Active" checked>
+                        {{else}}
+                        <input class="form-check-input" type="checkbox" name="Active">
+                        {{/if}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">ShowTotal</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if ShowTotal}}
-                    <input class="form-check-input" type="checkbox" name="ShowTotal" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="ShowTotal">
-                    {{/if}}
+            <div class="col row">
+                <label class="col-md-5 col-form-label">PickFrom</label>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="PickFrom"  value="{{PickFrom}}" >
                 </div>
             </div>
-        </div>
-    </div>
-    
-    <div class="row mb-3">
-        <div class="col row">
-            <label class="col-md-8 col-form-label">CreateNew</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if CreateNew}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="CreateNew">
-                    {{/if}}
-                </div>
             </div>
         </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">IsTextArea</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if IsTextArea}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="IsTextArea">
-                    {{/if}}
+
+        <div class="row mb-3">
+            <div class="col row">
+                <div class="col row">
+                    <label class="col-md-5 col-form-label">FolderName</label>
+                    <div class="col-7">
+                        <input class="form-control" type="text" name="FolderName"  value="{{FolderName}}" >
+                    </div>
+                </div>
+                </div>
+            <div class="col row">
+                <label class="col-md-5 col-form-label">FileName</label>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="FileName"  value="{{FileName}}" >
                 </div>
             </div>
-        </div>
-        <div class="col row">
-            <label class="col-md-8 col-form-label">EnterToServer</label>
-            <div class="col-4">
-                <div class="form-check  form-switch">
-                    {{#if EnterToServer}}
-                    <input class="form-check-input" type="checkbox" name="EnterToServer" checked>
-                    {{else}}
-                    <input class="form-check-input" type="checkbox" name="EnterToServer">
-                    {{/if}}
-                </div>
             </div>
         </div>
-    </div>
-    
-    
-    
+
+        <div class="row mb-3">
+            <div class="col row">
+                <div class="col row">
+                    <label class="col-md-5 col-form-label">ItemName</label>
+                    <div class="col-7">
+                        <input class="form-control" type="text" name="ItemName"  value="{{ItemName}}" >
+                    </div>
+                </div>
+                </div>
+            <div class="col row">
+                <label class="col-md-5 col-form-label">ColumnName</label>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="ColumnName"  value="{{ColumnName}}" >
+                </div>
+            </div>
+            </div>
+        </div>
+         
     </td>
     <td>
     <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
         Update
     </button>
-   
+    
     </td>
     </tr>
     
@@ -266,6 +247,7 @@
         </table>
     
         </script>
+
 
 
     <script id="HbsTemplateForTable" type="text/x-handlebars">
@@ -394,10 +376,11 @@
 
         jFChangeHeaderActiveClass();
     </script>
-    <script src="../../../../../Js/Login/LoginFetch.js" type="module"></script>
-    <script src="../../../../../Js/Login/Check.js" type="module"></script>
+    
+    <script src="../../../../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../../../../Js/Login/Check.js" type="module"></script>
 
-    <script src="../../../../../Js/Columns/Tabular/Alter/Toggles.js" type="module"></script>
+<script src="../../../../../../../Js/Columns/Tabular/Alter/SubMenu/ServerSide/EnterToServer.js" type="module"></script>
 
 </body>
 
