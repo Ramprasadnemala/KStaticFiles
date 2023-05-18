@@ -10,7 +10,7 @@ const StartFunc = () => {
     jVarLocalNavBarloginId.addEventListener("click", StartFuncCheckLogin);
 
 
-    let jVarLocalNavBarlogoutId = document.getElementById("NavBarloginId");
+    let jVarLocalNavBarlogoutId = document.getElementById("HeaderLogOutId");
 
     jVarLocalNavBarlogoutId.addEventListener("click", jfLocalCheckout);
 
