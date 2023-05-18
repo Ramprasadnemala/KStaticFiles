@@ -46,43 +46,8 @@
         </datalist>
     </main>
 
-    <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Footer.html"></include>
-
-    <!-- LOGIN  STARTED -->
-    <div class="modal fade" id="LoginModalId" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Enter client user credentials</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form id="LoginFormPopUpId" class="" onsubmit="return false" novalidate>
-                        <div class="mb-3 form-floating is-valid">
-                            <input type="text" class="form-control" id="KUserNameInput" required>
-                            <label for="KUserNameInput">User Name</label>
-                            <div class="invalid-feedback">
-                                User Name cannot be empty.
-                            </div>
-                        </div>
-                        <div class="mb-3 form-floating">
-                            <input type="password" class="form-control" id="KPasswordInput" required>
-                            <label for="KPasswordInput">Password</label>
-                            <div class="invalid-feedback">
-                                Password cannot be empty.
-                            </div>
-                        </div>
-                        <input type="submit" class=" btn btn-primary"
-                            onclick="jVarGlobalClientObject.Login.LoginCheck()">
-                        <!-- <button type="button" class="btn btn-primary"
-                        onclick="jVarGlobalAdmin.Login.LoginCheck()">Check</button>
-                         -->
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN FINISHED -->
+    <!-- <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Footer.html"></include> -->
+    <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
 
     <script src="/ClassesStatic/CommonClass.js"></script>
 
@@ -653,7 +618,10 @@
 
         CommonFuncsForFolders.CreateFolders();
     </script> -->
-<script src="../../../../../Js/Columns/Tabular/Alter/AllInOneWithValues.js" type="module"></script>
+
+    <script src="../../../../../Js/Login/LoginFetch.js" type="module"></script>
+    <script src="../../../../../Js/Login/Check.js" type="module"></script>
+    <script src="../../../../../Js/Columns/Tabular/Alter/AllInOneWithValues.js" type="module"></script>
 
 </body>
 
