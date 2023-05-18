@@ -10,6 +10,11 @@ const StartFunc = () => {
     jVarLocalNavBarloginId.addEventListener("click", StartFuncCheckLogin);
 
 
+    let jVarLocalNavBarlogoutId = document.getElementById("NavBarloginId");
+
+    jVarLocalNavBarlogoutId.addEventListener("click", jfLocalCheckout);
+
+
 };
 
 const jFLocalLoginButtonClick = () => {
@@ -61,4 +66,13 @@ const jFLocalFirmDetails = ({ inUserName, inFirmDetails }) => {
     localStorage.setItem("FirmDetails", JSON.stringify(inFirmDetails));
 };
 
+let jfLocalCheckout = () => {
+    LocalDeleteCookie({ inTokenName: "KToken" })
+    StartFuncCheckLogin();
+
+};
+
+let LocalDeleteCookie = ({ inTokenName }) => {
+    document.cookie = `${inTokenName}=; expires=Thu, 01 Jan 1947 00:00:00 UTC; path=/;`;
+};
 StartFunc();
