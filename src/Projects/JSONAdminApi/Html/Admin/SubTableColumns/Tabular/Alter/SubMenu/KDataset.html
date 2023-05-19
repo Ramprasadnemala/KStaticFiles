@@ -28,6 +28,7 @@
 
     <include src="./src/components/Templates/Admin/SubTableColumns/Tabular/Alter/SubMenu/Header.html"></include>
 
+
     <main class="mt-2">
         <div class="container">
             <div id="KCont1">
@@ -38,18 +39,19 @@
             <option value="form-control"></option>
         </datalist>
 
-        <datalist id="ParentClassesDataList">
-            <option value="col-md-4"></option>
-            <option value="col-md-8"></option>
-            <option value="col-md-12"></option>
+        <datalist id="HTMLControlTypeDataList">
+            <option value="String"></option>
+            <option value="Number"></option>
+            <option value="date"></option>
+            <option value="tel"></option>
+            <option value="password"></option>
+            <option value="checkbox"></option>
 
         </datalist>
-
     </main>
 
-    <!-- <include src="./src/components/Templates/Admin/SubTableColumns/Tabular/Alter/Footer.html"></include> -->
+    <!-- <include src="./src/components/Templates/Admin/Columns/Tabular/Alter/Footer.html"></include> -->
     <include src="./src/components/Templates/Admin/FooterWithLogin.html"></include>
-
 
 
 
@@ -62,9 +64,6 @@
     <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10/dist/sweetalert2.all.min.js"></script>
-
-
-
 
 
     <script id="HbsTemplateForScreensOnly" type="text/x-handlebars">
@@ -99,7 +98,7 @@
                 <tr>
                     <td colspan=5 >
                         <div class="collapse {{CollapseClass}}" id="{{../FolderName}}-{{../FileNameWithOutExtension}}-{{../ItemName}}-{{ScreenName}}">
-                            {{> HbsTemplateForSubTableColumns}}
+                            {{> HbsTemplateForTableColumnsForTogglesOnly FolderName=../FolderName FileNameWithOutExtension=../FileNameWithOutExtension ItemName=../ItemName ScreenName=ScreenName}}
                         </div>
                     </td>
                 </tr>
@@ -110,97 +109,107 @@
       </script>
 
 
-
-    <script id="HbsTemplateForSubTableColumns" type="text/x-handlebars">
-
-
-        <ul class="nav nav-tabs" role="tablist">
-            {{#each SubTableColumnsObject}}
-          
-            <li class="nav-item" role="presentation">
-                <button class="nav-link {{this.MenuClass}}" id="{{this.FolderName}}-tab" data-bs-toggle="tab"
-                    data-bs-target="#{{@key}}-{{@../key}}-{{@../../key}}-{{@../../../key}}-{{@../../../../key}}" type="button" role="tab" aria-controls="{{this.FolderName}}"
-                    aria-selected="true">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-folder"
-                        viewBox="0 0 16 16">
-                        <path
-                            d="M.54 3.87.5 3a2 2 0 0 1 2-2h3.672a2 2 0 0 1 1.414.586l.828.828A2 2 0 0 0 9.828 3h3.982a2 2 0 0 1 1.992 2.181l-.637 7A2 2 0 0 1 13.174 14H2.826a2 2 0 0 1-1.991-1.819l-.637-7a1.99 1.99 0 0 1 .342-1.31zM2.19 4a1 1 0 0 0-.996 1.09l.637 7a1 1 0 0 0 .995.91h10.348a1 1 0 0 0 .995-.91l.637-7A1 1 0 0 0 13.81 4H2.19zm4.69-1.707A1 1 0 0 0 6.172 2H2.5a1 1 0 0 0-1 .981l.006.139C1.72 3.042 1.95 3 2.19 3h5.396l-.707-.707z" />
-                    </svg>
-                    {{@key}}</button>
-            </li>
-            {{/each}}
-        </ul>
-        <div class="tab-content">
-            {{#each SubTableColumnsObject}}
-            <div class="tab-pane fade {{this.TabPageClass}}" id="{{@key}}-{{@../key}}-{{@../../key}}-{{@../../../key}}-{{@../../../../key}}" role="tabpanel"
-                aria-labelledby="{{this.FolderName}}-tab">
-                {{> HbsTemplateForTableColumnsForTogglesOnly}}
+    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th width="5%"></th>
+                    <th width="90%"></th>
+                    <th width="5%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each TableColumnsObject}}
+              
+    <tr class="{{RowClass}}">
+    <td class="text-center">
+    {{ForSNo @index}}
+    </td>
+    <td>
+        <div class="row mb-3">
+            <div class="col-12 col-xl-6">
+                                    <div class="row">
+                <label class="col-md-5 col-form-label">DataAttribute</label>
+            <div class="col-7">
+                <input class="form-control" type="text" name="DataAttribute" disabled value="{{DataAttribute}}">
             </div>
-            {{/each}}
+        
         </div>
         
-        </script>
-
-
-    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>S.no</th>
-                        <th>DataAttribute</th>
-                        <th>DisplayName</th>
-                        <th>IsIndianFormat</th>
-                        <th>IsInput</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {{#each TableColumnsObject}}
-                  
-        <tr class="{{RowClass}}">
-        <td class="text-center">
-        {{ForSNo @index}}
-        </td>
-        <td>
-            <input class="form-control" type="text" name="DataAttribute" disabled value="{{DataAttribute}}">
-    
-        </td>
-        <td>
-            <input class="form-control" type="text" name="DisplayName" list="ParentClassesDataList" disabled value="{{DisplayName}}" >
-    
-        </td>
-        <td>
-            <div class="form-check  form-switch">
-                {{#if IsIndianFormat}}
-                <input class="form-check-input" type="checkbox" name="IsIndianFormat" checked>
-                {{else}}
-                <input class="form-check-input" type="checkbox" name="IsIndianFormat">
-                {{/if}}
-            </div>    
-        </td>
-        <td>
-            <div class="form-check  form-switch">
-                {{#if IsInput}}
-                <input class="form-check-input" type="checkbox" name="IsInput" checked>
-                {{else}}
-                <input class="form-check-input" type="checkbox" name="IsInput">
-                {{/if}}
             </div>
-        </td>
-        <td>
-        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../../key}}"
-         data-filename="{{@../../../../key}}" data-itemname="{{@../../../key}}"
-          data-screenname="{{@../../key}}" data-subtablecolumnkey={{@../key}}
-          data-tablecolumnkey={{@key}}>
-            Update
-        </button>
-        </td>
-        </tr>
+            <div class="col-12 col-xl-4">
+                
+            <div class="row">
+                <label class="col-md-5 col-form-label">DisplayName</label>
+                <div class="col-7">
+                    <input class="form-control" type="text" name="DisplayName" disabled value="{{DisplayName}}" >
+                </div>
+            </div>
+            
         
-                    {{/each}}
-                </tbody>
-            </table>
+        </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-xl-6">
+                                    <div class="row">
+                <label class="col-md-5 col-form-label">HTMLControlType</label>
+            <div class="col-7">
+                <input class="form-control" type="text" name="HTMLControlType" list="HTMLControlTypeDataList"  value="{{HTMLControlType}}">
+            </div>
         
-            </script>
+        </div>
+        
+            </div>
+            <div class="col-12 col-xl-6">
+                
+            <div class="row">
+                <label class="col-md-5 col-form-label">Step</label>
+                <div class="col-7">
+                    <input class="form-control" type="Number" name="Step"  value="{{Step}}" >
+                </div>
+            </div>
+            
+        
+        </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-12 col-xl-6">
+                                    <div class="row">
+                <label class="col-md-5 col-form-label">Min</label>
+            <div class="col-7">
+                <input class="form-control" type="Number" name="Min"  value="{{Min}}">
+            </div>
+        
+        </div>
+        
+            </div>
+            <div class="col-12 col-xl-6">
+                
+            <div class="row">
+                <label class="col-md-5 col-form-label">Max</label>
+                <div class="col-7">
+                    <input class="form-control" type="Number" name="Max"  value="{{Max}}" >
+                </div>
+            </div>
+            
+        
+        </div>
+        </div>
+
+    </td>
+    <td>
+    <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
+        Update
+    </button>
+   
+    </td>
+    </tr>
+    
+                {{/each}}
+            </tbody>
+        </table>
+    
+        </script>
 
 
 
@@ -332,8 +341,7 @@
     </script>
     <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
     <script src="../../../../../../Js/Login/Check.js" type="module"></script>
-    <script src="../../../../../../Js/SubColumns/Tabular/Alter/SubMenu/DisplayType.js" type="module"></script>
-
+    <script src="../../../../../../Js/Columns/Tabular/Alter/SubMenu/KDataset.js" type="module"></script>
 
 </body>
 
