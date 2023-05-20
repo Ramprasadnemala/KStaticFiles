@@ -1,23 +1,6 @@
 import { StartFunc as CheckOnDomStartFunc } from "./CheckOnDom.js";
 import { StartFunc as CheckTokenStartFunc } from "./CheckToken.js";
-
-let LocalShowInHeader = ({ inUserKey }) => {
-    let LocalUserName = localStorage.getItem(inUserKey);
-    let jVarLocalHeaderLoginButtonId = document.getElementById("HeaderLoginButtonId");
-
-    if (jVarLocalHeaderLoginButtonId !== null) {
-        jVarLocalHeaderLoginButtonId.classList.add("visually-hidden");
-        document.getElementById("HeaderUserIdDropDown").classList.remove("visually-hidden");
-
-        if (LocalUserName !== null) {
-            document.getElementById("HeaderUserIdDropDown").innerHTML =
-                document.getElementById("HeaderUserIdDropDown").innerHTML.replace("UserName", LocalUserName);
-
-            document.getElementById('NavBarId').classList.remove("bg-danger");
-            document.getElementById('NavBarId').classList.add("bg-dark");
-        };
-    };
-};
+import { StartFunc as StartFuncDeleteTokenAndCheck } from "./DeleteTokenAndCheck.js";
 
 let LocalFirmDetails = ({ inUserKey }) => {
     let LocalUserName = document.getElementById("KUserNameInput").value;
@@ -45,6 +28,12 @@ let StartFunc = ({ inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId }) =
 
             myModal.show();
         });
+    };
+
+    let jVarLocalHeaderUserIdDropDown = document.getElementById("HeaderUserIdDropDown");
+
+    if ((jVarLocalHeaderUserIdDropDown == null) === false) { //Executes if variable is null OR undefined
+        jVarLocalHeaderUserIdDropDown.addEventListener("click", StartFuncDeleteTokenAndCheck);
     };
 };
 

@@ -16,16 +16,19 @@ let LocalDeleteCookie = ({ inTokenName }) => {
 };
 
 let StartFunc = async () => {
-
     let localJsonDataFetch = await fetch('../../Js/ConfigKeys.json');
     let ResponseJsonData = await localJsonDataFetch.json();
-    console.log("ResponseJsonData:",ResponseJsonData);
 
+    let LocalSubRoute = ResponseJsonData.AdminSubRoute;
     let localinUserKey = ResponseJsonData.UserKey;
     let localinFirmKey = ResponseJsonData.FirmKey;
     let localinTokenName = ResponseJsonData.TokenName;
     let localinModalId = ResponseJsonData.ModalId;
 
+    // let localinUserKey = inUserKey;
+    // let localinFirmKey = inFirmKey;
+    // let localinTokenName = inTokenName;
+    // let localinModalId = inModalId;
 
     let jVarLocalCookieValue = LocalgetCookie(localinTokenName);
 
@@ -33,8 +36,8 @@ let StartFunc = async () => {
         localStorage.removeItem(localinUserKey);
         localStorage.removeItem(localinFirmKey);
 
-        document.getElementById('NavBarId').classList.add("bg-danger");
-        document.getElementById('NavBarId').classList.remove("bg-dark");
+        // document.getElementById('NavBarId').classList.add("bg-danger");
+        // document.getElementById('NavBarId').classList.remove("bg-dark");
 
         LocalDeleteCookie({ inTokenName: localinTokenName });
 
@@ -43,7 +46,7 @@ let StartFunc = async () => {
         var myModal = new bootstrap.Modal(document.getElementById(jVarLocalId), { keyboard: true, focus: true });
         myModal.show();
     } else {
-        ShowOnHeaderStartFunc({ localinUserKey });
+        ShowOnHeaderStartFunc({ inUserKey: localinUserKey });
 
         let jVarLocalId = localinModalId;
         var myModalEl = document.getElementById(jVarLocalId);
@@ -56,4 +59,4 @@ let StartFunc = async () => {
     };
 };
 
-StartFunc().then();
+export { StartFunc }
