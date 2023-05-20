@@ -57,6 +57,7 @@ let StartFunc = async () => {
         if ((modal === null) === false) {
             modal.hide();
         };
+        return await true;
     };
 };
 
