@@ -45,6 +45,7 @@ let StartFunc = async () => {
 
         var myModal = new bootstrap.Modal(document.getElementById(jVarLocalId), { keyboard: true, focus: true });
         myModal.show();
+        return await false;
     } else {
         ShowOnHeaderStartFunc({ inUserKey: localinUserKey });
 

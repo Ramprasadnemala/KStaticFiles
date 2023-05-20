@@ -4,10 +4,8 @@ import { StartFunc as StartFuncDeleteTokenAndCheck } from "./DeleteTokenAndCheck
 
 let LocalFirmDetails = ({ inUserKey }) => {
     let LocalUserName = document.getElementById("KUserNameInput").value;
-    // let jVarLocalObject.Password = document.getElementById("KPasswordInput").value;
 
     localStorage.setItem(inUserKey, LocalUserName);
-    //    localStorage.setItem(inFirmKey, JSON.stringify(inFirmDetails));
 };
 
 let StartFunc = ({ inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId }) => {
@@ -39,24 +37,13 @@ let StartFunc = ({ inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId }) =
 
 let LocalButtonClickFunc = async ({ inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId }) => {
     let LocalFromDomFunc = await CheckOnDomStartFunc({ inSubRoute, inUserKey, inFirmKey, inTokenName });
-
+    
     if (LocalFromDomFunc.KTF) {
         LocalFirmDetails({ inUserKey });
-        CheckTokenStartFunc({ inUserKey, inFirmKey, inTokenName, inModalId });
 
-        // if (LocalFromCheckTokenStartFunc) {
+        window.location.href = "";
 
-        //     let LocalModalId = inModalId;
-        //     var myModalEl = document.getElementById(LocalModalId);
-
-        //     var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
-
-        //     modal.hide();
-
-        //     LocalFirmDetails({ inUserKey });
-        //     LocalShowInHeader({ inUserKey });
-        //     // this.Login.LocalStorage.FirmDetails({ inUserName, inFirmDetails: FetchDataJson });
-        // };
+        // CheckTokenStartFunc({ inUserKey, inFirmKey, inTokenName, inModalId });
     };
 };
 

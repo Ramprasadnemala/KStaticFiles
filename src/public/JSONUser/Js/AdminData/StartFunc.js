@@ -20,10 +20,9 @@ let StartFunc = async () => {
         inModalId: localinModalId
     });
 
-    StartFuncCheckToken().then();
+    return await StartFuncCheckToken();
 };
 
-StartFunc().then();
+// StartFunc().then();
 
-
-// export { StartFunc }
+export { StartFunc };
