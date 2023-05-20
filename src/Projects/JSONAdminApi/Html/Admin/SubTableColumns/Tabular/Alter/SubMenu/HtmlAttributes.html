@@ -168,7 +168,7 @@
             </div>
             
                 </div>
-                <div class="col-12 col-xl-4">
+                <div class="col-12 col-xl-6">
                     
                 <div class="row">
                     <label class="col-md-5 col-form-label">DisplayName</label>
@@ -180,77 +180,34 @@
             
             </div>
             </div>
+            
+            
             <div class="row mb-3">
-                <div class="col-12 col-xl-6">
-                                        <div class="row">
-                    <label class="col-md-5 col-form-label">ClientEval</label>
-                <div class="col-7">
-                    <input class="form-control" type="text" name="ClientEval" list="ClientEvalDataList"  value="{{ClientEval}}">
+                <div class="col row">
+                    <label class="col-md-5 col-form-label">list</label>
+                    <div class="col-7">
+                        <input class="form-control" type="text" name="list" value="{{list}}">
+                    </div>
                 </div>
-            
-            </div>
-            
-                </div>
-                <div class="col-12 col-xl-6">
-                    
-                <div class="row">
-                    <label class="col-md-8 col-form-label">onkeypress</label>
+                <div class="col row">
+                    <label class="col-md-8 col-form-label">KTF</label>
                     <div class="col-4">
                         <div class="form-check  form-switch">
-                            {{#if onkeypress}}
-                            <input class="form-check-input" type="checkbox" name="onkeypress" checked>
+                            {{#if KTF}}
+                            <input class="form-check-input" type="checkbox" name="KTF" checked>
                             {{else}}
-                            <input class="form-check-input" type="checkbox" name="onkeypress">
+                            <input class="form-check-input" type="checkbox" name="KTF">
                             {{/if}}
                         </div>
                     </div>
                 </div>
-                
-            
             </div>
-            </div>
-            <div class="row mb-3">
-                <div class="col-12 col-xl-6">
-                                        <div class="row">
-                                            <label class="col-md-8 col-form-label">EnterOnClient</label>
-                                            <div class="col-4">
-                                                <div class="form-check  form-switch">
-                                                    {{#if EnterOnClient}}
-                                                    <input class="form-check-input" type="checkbox" name="EnterOnClient" checked>
-                                                    {{else}}
-                                                    <input class="form-check-input" type="checkbox" name="EnterOnClient">
-                                                    {{/if}}
-                                                </div>
-                                            </div>
-            </div>
-            
-                </div>
-                <div class="col-12 col-xl-6">
-                    
-                <div class="row">
-                    <label class="col-md-8 col-form-label">CustomDataList</label>
-                    <div class="col-4">
-                        <div class="form-check  form-switch">
-                            {{#if CustomDataList}}
-                            <input class="form-check-input" type="checkbox" name="CustomDataList" checked>
-                            {{else}}
-                            <input class="form-check-input" type="checkbox" name="CustomDataList">
-                            {{/if}}
-                        </div>
-                    </div>
-                </div>
-                
-            
-            </div>
-            </div>
+             
         </td>
         <td>
-            <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../../key}}"
-            data-filename="{{@../../../../key}}" data-itemname="{{@../../../key}}"
-             data-screenname="{{@../../key}}" data-subtablecolumnkey={{@../key}}
-             data-tablecolumnkey={{@key}}>
-               Update
-           </button>
+        <button type="button" class="btn btn-outline-info UpdateButtonClass" data-foldername="{{@../../../../key}}" data-filename="{{@../../../key}}" data-itemname="{{@../../key}}" data-screenname="{{@../key}}">
+            Update
+        </button>
        
         </td>
         </tr>
@@ -260,6 +217,7 @@
             </table>
         
             </script>
+    
 
 
 
@@ -393,7 +351,7 @@
 
     <script src="../../../../../../Js/Login/LoginFetch.js" type="module"></script>
     <script src="../../../../../../Js/Login/Check.js" type="module"></script>
-    <script src="../../../../../../Js/SubColumns/Tabular/Alter/SubMenu/KDataAttributes.js" type="module"></script>
+    <script src="../../../../../../Js/SubColumns/Tabular/Alter/SubMenu/HtmlAttributes.js" type="module"></script>
 
 
 </body>

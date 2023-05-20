@@ -16,21 +16,30 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocaltablecolumnkey = jVarLocalCurrentTarget.dataset.tablecolumnkey;
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
-    let jVarLocalValidate = jVarLocalColsestTr.querySelector('[name="Validate"]');
-    let jVarLocalDataListReverse = jVarLocalColsestTr.querySelector('[name="DataListReverse"]');
-    let jVarLocalType = jVarLocalColsestTr.querySelector('[name="Type"]');
+    let jVarLocalDataAttribute = jVarLocalColsestTr.querySelector('[name="DataAttribute"]');
+    let jVarLocalonkeypress = jVarLocalColsestTr.querySelector('[name="onkeypress"]');
+    let jVarLocalEnterOnClient = jVarLocalColsestTr.querySelector('[name="EnterOnClient"]');
+    let jVarLocalCustomDataList = jVarLocalColsestTr.querySelector('[name="CustomDataList"]');
 
-    let jVarLocalValidateValue = jVarLocalValidate.checked;
-    let jVarLocalDataListReverseValue = jVarLocalDataListReverse.checked;
+    let jVarLocalType = jVarLocalColsestTr.querySelector('[name="ClientEval"]');
+
+    let jVarLocalDataAttributeValue = jVarLocalDataAttribute.value;
+    let jVarLocalonkeypressValue = jVarLocalonkeypress.checked;
+    let jVarLocalEnterOnClientValue = jVarLocalCustomDataList.checked;
+    let jVarLocalCustomDataListValue = jVarLocalCustomDataList.checked;
+
     let jVarLocalTypeValue = jVarLocalType.value;
 
     let BodyAsJson = {
-        Validate: jVarLocalValidateValue,
-        DataListReverse: jVarLocalDataListReverseValue,
-        Type:jVarLocalTypeValue
+        CustomDataList: jVarLocalCustomDataListValue,
+        onkeypress: jVarLocalonkeypressValue,
+
+        EnterOnClient: jVarLocalEnterOnClientValue,
+
+        ClientEval: jVarLocalTypeValue
     }
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableColumns/SubKeys/KDatasetStuff";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableColumns/SubKeys/KDataAttributes";
 
     let response = await fetch(jFetchUrl, {
         method: "PATCH",

@@ -100,7 +100,7 @@
         </table>
       </script>
 
-    <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
+      <script id="HbsTemplateForTableColumnsForTogglesOnly" type="text/x-handlebars">
         <table class="table">
             <thead>
                 <tr>
@@ -143,9 +143,9 @@
         <div class="row mb-3">
             <div class="col-12 col-xl-6">
                                     <div class="row">
-                <label class="col-md-5 col-form-label">HTMLControlType</label>
+                <label class="col-md-5 col-form-label">ClientEval</label>
             <div class="col-7">
-                <input class="form-control" type="text" name="HTMLControlType" list="HTMLControlTypeDataList"  value="{{HTMLControlType}}">
+                <input class="form-control" type="text" name="ClientEval" list="ClientEvalDataList"  value="{{ClientEval}}">
             </div>
         
         </div>
@@ -154,9 +154,15 @@
             <div class="col-12 col-xl-6">
                 
             <div class="row">
-                <label class="col-md-5 col-form-label">Step</label>
-                <div class="col-7">
-                    <input class="form-control" type="Number" name="Step"  value="{{Step}}" >
+                <label class="col-md-8 col-form-label">onkeypress</label>
+                <div class="col-4">
+                    <div class="form-check  form-switch">
+                        {{#if onkeypress}}
+                        <input class="form-check-input" type="checkbox" name="onkeypress" checked>
+                        {{else}}
+                        <input class="form-check-input" type="checkbox" name="onkeypress">
+                        {{/if}}
+                    </div>
                 </div>
             </div>
             
@@ -166,20 +172,31 @@
         <div class="row mb-3">
             <div class="col-12 col-xl-6">
                                     <div class="row">
-                <label class="col-md-5 col-form-label">Min</label>
-            <div class="col-7">
-                <input class="form-control" type="Number" name="Min"  value="{{Min}}">
-            </div>
-        
+                                        <label class="col-md-8 col-form-label">EnterOnClient</label>
+                                        <div class="col-4">
+                                            <div class="form-check  form-switch">
+                                                {{#if EnterOnClient}}
+                                                <input class="form-check-input" type="checkbox" name="EnterOnClient" checked>
+                                                {{else}}
+                                                <input class="form-check-input" type="checkbox" name="EnterOnClient">
+                                                {{/if}}
+                                            </div>
+                                        </div>
         </div>
         
             </div>
             <div class="col-12 col-xl-6">
                 
             <div class="row">
-                <label class="col-md-5 col-form-label">Max</label>
-                <div class="col-7">
-                    <input class="form-control" type="Number" name="Max"  value="{{Max}}" >
+                <label class="col-md-8 col-form-label">CustomDataList</label>
+                <div class="col-4">
+                    <div class="form-check  form-switch">
+                        {{#if CustomDataList}}
+                        <input class="form-check-input" type="checkbox" name="CustomDataList" checked>
+                        {{else}}
+                        <input class="form-check-input" type="checkbox" name="CustomDataList">
+                        {{/if}}
+                    </div>
                 </div>
             </div>
             
@@ -201,6 +218,8 @@
         </table>
     
         </script>
+
+
 
 
 

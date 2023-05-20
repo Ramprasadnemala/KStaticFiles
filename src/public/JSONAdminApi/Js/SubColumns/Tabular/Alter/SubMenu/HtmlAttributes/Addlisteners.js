@@ -15,26 +15,19 @@ let jFLocalClickFunc = async (event) => {
 
     let jVarLocalColsestTr = jVarLocalCurrentTarget.closest("tr");
     let jVarLocalDataAttribute = jVarLocalColsestTr.querySelector('[name="DataAttribute"]');
-    let jVarLocalonkeypress = jVarLocalColsestTr.querySelector('[name="onkeypress"]');
-    let jVarLocalEnterOnClient = jVarLocalColsestTr.querySelector('[name="EnterOnClient"]');
-    let jVarLocalCustomDataList = jVarLocalColsestTr.querySelector('[name="CustomDataList"]');
-    let jVarLocalType = jVarLocalColsestTr.querySelector('[name="ClientEval"]');
+    let jVarLocalDataListReverse = jVarLocalColsestTr.querySelector('[name="KTF"]');
+    let jVarLocalType = jVarLocalColsestTr.querySelector('[name="list"]');
 
     let jVarLocalDataAttributeValue = jVarLocalDataAttribute.value;
-    let jVarLocalonkeypressValue = jVarLocalonkeypress.checked;
-    let jVarLocalEnterOnClientValue = jVarLocalEnterOnClient.checked;
-    let jVarLocalCustomDataListValue = jVarLocalCustomDataList.checked;
-
+    let jVarLocalDataListReverseValue = jVarLocalDataListReverse.checked;
     let jVarLocalTypeValue = jVarLocalType.value;
 
     let BodyAsJson = {
-        CustomDataList: jVarLocalCustomDataListValue,
-        onkeypress: jVarLocalonkeypressValue,
-        EnterOnClient: jVarLocalEnterOnClientValue,
-        ClientEval: jVarLocalTypeValue
+        KTF: jVarLocalDataListReverseValue,
+        list: jVarLocalTypeValue
     }
 
-    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/TableColumns/SubKeys/KDataAttributes";
+    let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableColumns/SubKeys/HtmlAttributes";
     let localFetchBody = {
         method: "PATCH",
         headers: {
