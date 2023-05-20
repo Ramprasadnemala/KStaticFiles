@@ -8,14 +8,16 @@ let jVarGlobalModalId = "LoginModalId";
 let jVarGlobalAdminSubRoute = "JSONUser";
 
 let StartFunc = async () => {
-    StartFuncAdminData().then(promiseData => {
-        if (promiseData) {
-            StartFuncButtonClicks({
-                inSubRoute: jVarGlobalAdminSubRoute
-            });
-        }
+    StartFuncAdminData({
+        inSubRoute: jVarGlobalAdminSubRoute,
+        inUserKey: jVarGlobalUserKey,
+        inFirmKey: jVarGlobalFirmKey,
+        inTokenName: jVarGlobalTokenName,
+        inModalId: jVarGlobalModalId
     });
-
+    StartFuncButtonClicks({
+        inSubRoute: jVarGlobalAdminSubRoute
+    });
 
 
     // AddListenersPostShowDataStartFunc({
