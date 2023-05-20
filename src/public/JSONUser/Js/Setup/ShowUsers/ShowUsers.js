@@ -2,26 +2,30 @@ import { StartFunc as StartFuncShowData } from "./FetchFuncs/ShowData.js";
 import { StartFunc as CheckTokenStartFunc } from "../../AdminData/CheckToken.js";
 import { StartFunc as AddListenersStartFunc } from "./AddListeners.js";
 
-let jVarGlobalTokenName = "KUMAToken";
-let jVarGlobalUserKey = "KUMAUserName";
-let jVarGlobalFirmKey = "FirmDetails";
-let jVarGlobalModalId = "LoginModalId";
-let jVarGlobalAdminSubRoute = "JSONUser";
+
+let localJsonDataFetch = await fetch('/JSONUser/Js/ConfigKeys.json');
+let ResponseJsonData = await localJsonDataFetch.json();
+
+// let jVarGlobalTokenName = "KUMAToken";
+// let jVarGlobalUserKey = "KUMAUserName";
+// let jVarGlobalFirmKey = "FirmDetails";
+// let jVarGlobalModalId = "LoginModalId";
+// let jVarGlobalAdminSubRoute = "JSONUser";
 
 let StartFunc = async () => {
     AddListenersStartFunc({
-        inSubRoute: jVarGlobalAdminSubRoute,
-        inUserKey: jVarGlobalUserKey,
-        inFirmKey: jVarGlobalFirmKey,
-        inTokenName: jVarGlobalTokenName,
-        inModalId: jVarGlobalModalId
+        inSubRoute: ResponseJsonData.SubRoute,
+        inUserKey: ResponseJsonData.UserKey,
+        inFirmKey: ResponseJsonData.FirmKey,
+        inTokenName: ResponseJsonData.TokenName,
+        inModalId: ResponseJsonData.ModalId
     });
 
     CheckTokenStartFunc({
-        inUserKey: jVarGlobalUserKey,
-        inFirmKey: jVarGlobalFirmKey,
-        inTokenName: jVarGlobalTokenName,
-        inModalId: jVarGlobalModalId
+        inUserKey: ResponseJsonData.UserKey,
+        inFirmKey: ResponseJsonData.FirmKey,
+        inTokenName: ResponseJsonData.TokenName,
+        inModalId: ResponseJsonData.ModalId
     });
 
     StartFuncShowData();

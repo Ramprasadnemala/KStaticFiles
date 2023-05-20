@@ -1,0 +1,9 @@
+{
+    "TokenName": "KUMAToken",
+    "UserKey": "KUMAUserName",
+    "FirmKey": "FirmDetails",
+    "ModalId": "LoginModalId",
+    "AdminSubRoute": "JSONUser",
+    "LocalStorageKey": "kUserName",
+    "FirmDetailsLocalStorageKey": "FirmDetails"
+}

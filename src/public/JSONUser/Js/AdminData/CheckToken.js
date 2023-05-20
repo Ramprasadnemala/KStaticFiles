@@ -15,34 +15,45 @@ let LocalDeleteCookie = ({ inTokenName }) => {
     document.cookie = `${inTokenName}=; expires=Thu, 01 Jan 1947 00:00:00 UTC; path=/;`;
 };
 
-let StartFunc = ({ inUserKey, inFirmKey, inTokenName, inModalId }) => {
-    let jVarLocalCookieValue = LocalgetCookie(inTokenName);
+let StartFunc = async () => {
+
+    let localJsonDataFetch = await fetch('../../Js/ConfigKeys.json');
+    let ResponseJsonData = await localJsonDataFetch.json();
+    console.log("ResponseJsonData:",ResponseJsonData);
+
+    let localinUserKey = ResponseJsonData.UserKey;
+    let localinFirmKey = ResponseJsonData.FirmKey;
+    let localinTokenName = ResponseJsonData.TokenName;
+    let localinModalId = ResponseJsonData.ModalId;
+
+
+    let jVarLocalCookieValue = LocalgetCookie(localinTokenName);
 
     if (jVarLocalCookieValue === null) {
-        localStorage.removeItem(inUserKey);
-        localStorage.removeItem(inFirmKey);
+        localStorage.removeItem(localinUserKey);
+        localStorage.removeItem(localinFirmKey);
 
         document.getElementById('NavBarId').classList.add("bg-danger");
         document.getElementById('NavBarId').classList.remove("bg-dark");
 
-       LocalDeleteCookie({ inTokenName });
+        LocalDeleteCookie({ inTokenName: localinTokenName });
 
-        let jVarLocalId = inModalId;
+        let jVarLocalId = localinModalId;
 
         var myModal = new bootstrap.Modal(document.getElementById(jVarLocalId), { keyboard: true, focus: true });
         myModal.show();
     } else {
-        ShowOnHeaderStartFunc({ inUserKey });
+        ShowOnHeaderStartFunc({ localinUserKey });
 
-        let jVarLocalId = inModalId;
+        let jVarLocalId = localinModalId;
         var myModalEl = document.getElementById(jVarLocalId);
 
         var modal = bootstrap.Modal.getInstance(myModalEl) // Returns a Bootstrap modal instance
-        
+
         if ((modal === null) === false) {
             modal.hide();
         };
     };
 };
 
-export { StartFunc };
+StartFunc().then();
