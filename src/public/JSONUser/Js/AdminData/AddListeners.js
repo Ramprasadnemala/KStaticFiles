@@ -1,5 +1,4 @@
 import { StartFunc as CheckOnDomStartFunc } from "./CheckOnDom.js";
-import { StartFunc as CheckTokenStartFunc } from "./CheckToken.js";
 import { StartFunc as StartFuncDeleteTokenAndCheck } from "./DeleteTokenAndCheck.js";
 
 let LocalFirmDetails = ({ inUserKey }) => {

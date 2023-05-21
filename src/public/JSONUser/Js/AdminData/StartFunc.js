@@ -3,24 +3,28 @@ import { StartFunc as StartFuncCheckToken } from "./CheckToken.js";
 // inSubRoute, inUserKey, inFirmKey, inTokenName, inModalId
 
 let StartFunc = async () => {
-    let localJsonDataFetch = await fetch('../../Js/ConfigKeys.json');
-    let ResponseJsonData = await localJsonDataFetch.json();
+    let jVarLocalFromCheck = await StartFuncCheckToken();
 
-    let LocalSubRoute = ResponseJsonData.AdminSubRoute;
-    let localinUserKey = ResponseJsonData.UserKey;
-    let localinFirmKey = ResponseJsonData.FirmKey;
-    let localinTokenName = ResponseJsonData.TokenName;
-    let localinModalId = ResponseJsonData.ModalId;
+    if (jVarLocalFromCheck === false) {
+        let localJsonDataFetch = await fetch('../Js/ConfigKeys.json');
+        let ResponseJsonData = await localJsonDataFetch.json();
 
-    StartFuncAddListeners({
-        inSubRoute: LocalSubRoute,
-        inUserKey: localinUserKey,
-        inFirmKey: localinFirmKey,
-        inTokenName: localinTokenName,
-        inModalId: localinModalId
-    });
+        let LocalSubRoute = ResponseJsonData.AdminSubRoute;
+        let localinUserKey = ResponseJsonData.UserKey;
+        let localinFirmKey = ResponseJsonData.FirmKey;
+        let localinTokenName = ResponseJsonData.TokenName;
+        let localinModalId = ResponseJsonData.ModalId;
 
-    return await StartFuncCheckToken();
+        StartFuncAddListeners({
+            inSubRoute: LocalSubRoute,
+            inUserKey: localinUserKey,
+            inFirmKey: localinFirmKey,
+            inTokenName: localinTokenName,
+            inModalId: localinModalId
+        });
+    };
+
+    return await jVarLocalFromCheck;
 };
 
 // StartFunc().then();

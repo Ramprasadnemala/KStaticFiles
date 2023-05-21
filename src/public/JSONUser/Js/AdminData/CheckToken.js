@@ -16,7 +16,7 @@ let LocalDeleteCookie = ({ inTokenName }) => {
 };
 
 let StartFunc = async () => {
-    let localJsonDataFetch = await fetch('../../Js/ConfigKeys.json');
+    let localJsonDataFetch = await fetch('../Js/ConfigKeys.json');
     let ResponseJsonData = await localJsonDataFetch.json();
 
     let LocalSubRoute = ResponseJsonData.AdminSubRoute;
@@ -57,6 +57,7 @@ let StartFunc = async () => {
         if ((modal === null) === false) {
             modal.hide();
         };
+        return await true;
     };
 };
 
