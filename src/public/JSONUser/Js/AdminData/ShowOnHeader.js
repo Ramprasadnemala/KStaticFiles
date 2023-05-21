@@ -1,5 +1,4 @@
 let StartFunc = ({ inUserKey }) => {
-    console.log("inUserKey : ", inUserKey);
     let LocalUserName = localStorage.getItem(inUserKey);
     let jVarLocalHeaderLoginButtonId = document.getElementById("HeaderLoginButtonId");
 
@@ -17,4 +16,4 @@ let StartFunc = ({ inUserKey }) => {
     };
 };
 
-export { StartFunc }
+export { StartFunc };

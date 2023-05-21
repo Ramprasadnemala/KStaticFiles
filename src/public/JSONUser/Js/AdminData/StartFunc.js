@@ -4,11 +4,11 @@ import { StartFunc as StartFuncCheckToken } from "./CheckToken.js";
 
 let StartFunc = async () => {
     let jVarLocalFromCheck = await StartFuncCheckToken();
-
+ 
     if (jVarLocalFromCheck === false) {
-        let localJsonDataFetch = await fetch('../Js/ConfigKeys.json');
+        let localJsonDataFetch = await fetch('/JSONUser/Js/ConfigKeys.json');
         let ResponseJsonData = await localJsonDataFetch.json();
-
+        
         let LocalSubRoute = ResponseJsonData.AdminSubRoute;
         let localinUserKey = ResponseJsonData.UserKey;
         let localinFirmKey = ResponseJsonData.FirmKey;

@@ -16,7 +16,7 @@ let LocalDeleteCookie = ({ inTokenName }) => {
 };
 
 let StartFunc = async () => {
-    let localJsonDataFetch = await fetch('../Js/ConfigKeys.json');
+    let localJsonDataFetch = await fetch('/JSONUser/Js/ConfigKeys.json');
     let ResponseJsonData = await localJsonDataFetch.json();
 
     let LocalSubRoute = ResponseJsonData.AdminSubRoute;
@@ -24,11 +24,6 @@ let StartFunc = async () => {
     let localinFirmKey = ResponseJsonData.FirmKey;
     let localinTokenName = ResponseJsonData.TokenName;
     let localinModalId = ResponseJsonData.ModalId;
-
-    // let localinUserKey = inUserKey;
-    // let localinFirmKey = inFirmKey;
-    // let localinTokenName = inTokenName;
-    // let localinModalId = inModalId;
 
     let jVarLocalCookieValue = LocalgetCookie(localinTokenName);
 
