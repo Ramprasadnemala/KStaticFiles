@@ -1,7 +1,6 @@
 // KVerticalFooterSaveButtonClass
 //import { StartFunc as StartFuncExtractValue } from "../../../CommonFuncs/Htmlnputs/ExtractValue.js";
 import { StartFunc as StartFuncLoopInputs } from "../../../CommonFuncs/Htmlnputs/LoopInputs.js";
-import { StartFunc as StartFunCheckBeforeSave } from "../../../CommonFuncs/Htmlnputs/CheckBeforeSave.js";
 
 let StartFunc = async ({ inProjectName, inSubRoute }) => {
     let jVarLocalFind = document.querySelectorAll(".KVerticalFooterSaveButtonClass");
@@ -24,7 +23,7 @@ let Vertical = {
             let jVarClosestKTableDivClass = jVarLocalCurrentTarget.closest(".KTableDivClass");
             let jVarLocalKCardBody = jVarClosestKTableDivClass.querySelector(".KCardBody");
 
-            if (StartFunCheckBeforeSave({ inJVarTableFooter: jVarLocalHtmlCardBody })) {
+            if (Vertical.SaveFuncs.CommonFuncs.CheckBeforeSave(jVarLocalHtmlCardBody)) {
                 // let jVarLocalFetchPostData = VerticalCommonFuncs.PreparePostData.ForSave({ jVarHtmlCardBody: jVarLocalHtmlCardBody });
 
                 let jVarLocalFetchPostData = StartFuncLoopInputs({ jVarHtmlCardBody: jVarLocalHtmlCardBody });
@@ -37,7 +36,7 @@ let Vertical = {
                     inProjectName, inSubRoute
                 }).then(PromiseData => {
                     if (PromiseData.KTF) {
-                        window.location.href = `Show.html${window.location.search}&JsonPk=${PromiseData.kPK}`;
+                         window.location.href = `Show.html${window.location.search}&JsonPk=${PromiseData.kPK}`;
                     };
                     // console.log("ssssssssss : ", PromiseData);
                 });

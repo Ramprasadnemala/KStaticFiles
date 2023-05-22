@@ -1,5 +1,4 @@
 import { StartFunc as StartFuncLoopInputs } from "../../../../../CommonFuncs/Htmlnputs/LoopInputs.js";
-import { StartFunc as StartFunCheckBeforeSave } from "../../../../../CommonFuncs/Htmlnputs/CheckBeforeSave.js";
 
 let StartFunc = async ({ inProjectName, inSubRoute }) => {
     let jVarLocalFind = document.querySelectorAll(".SubTableFooterCreateNewRowSaveButtonClass");
@@ -31,39 +30,40 @@ const jFLocalFromCardDataSet = ({ inHtmlCard }) => {
 
     return jVarLocalReturnData;
 };
-// const jFLocalCheckBeforeSave = ({ inJVarTableFooter }) => {
-//     let jVarLocalRetTf = true;
 
-//     let jVarLocalDataSetObject;
-//     let jVarLocalHtmlNamesArray = inJVarTableFooter.querySelectorAll("[name]");
+const jFLocalCheckBeforeSave = ({ inJVarTableFooter }) => {
+    let jVarLocalRetTf = true;
 
-//     jVarLocalHtmlNamesArray.forEach((LoopItem) => {
-//         if (LoopItem.dataset.hasOwnProperty("keshavsoft")) {
-//             jVarLocalDataSetObject = JSON.parse(LoopItem.dataset.keshavsoft);
-//             if (jVarLocalDataSetObject.Validate) {
-//                 if (LoopItem.classList.contains("is-invalid")) {
-//                     LoopItem.classList.remove("is-invalid");
-//                 };
+    let jVarLocalDataSetObject;
+    let jVarLocalHtmlNamesArray = inJVarTableFooter.querySelectorAll("[name]");
 
-//                 switch (jVarLocalDataSetObject.Type) {
-//                     case "NotEmpty":
-//                         if (LoopItem.value === "") {
-//                             LoopItem.classList.add("is-invalid");
-//                             LoopItem.focus();
-//                             jVarLocalRetTf = false;
-//                         };
+    jVarLocalHtmlNamesArray.forEach((LoopItem) => {
+        if (LoopItem.dataset.hasOwnProperty("keshavsoft")) {
+            jVarLocalDataSetObject = JSON.parse(LoopItem.dataset.keshavsoft);
+            if (jVarLocalDataSetObject.Validate) {
+                if (LoopItem.classList.contains("is-invalid")) {
+                    LoopItem.classList.remove("is-invalid");
+                };
 
-//                         break;
+                switch (jVarLocalDataSetObject.Type) {
+                    case "NotEmpty":
+                        if (LoopItem.value === "") {
+                            LoopItem.classList.add("is-invalid");
+                            LoopItem.focus();
+                            jVarLocalRetTf = false;
+                        };
 
-//                     default:
-//                         break;
-//                 };
-//             };
-//         }
-//     });
+                        break;
 
-//     return jVarLocalRetTf;
-// };
+                    default:
+                        break;
+                };
+            };
+        }
+    });
+
+    return jVarLocalRetTf;
+};
 
 let jFLocalButtonClick = ({ inEvent, inProjectName, inSubRoute }) => {
     inEvent.preventDefault();
@@ -77,7 +77,7 @@ let jFLocalButtonClick = ({ inEvent, inProjectName, inSubRoute }) => {
 
     let jVarLocalJsonConfigAndItemConfig = jFLocalFromCardDataSet({ inHtmlCard: jVarLocalHtmlCard });
 
-    if (StartFunCheckBeforeSave({ inJVarTableFooter: jVarLocalTableFooterCreateRow })) {
+    if (jFLocalCheckBeforeSave({ inJVarTableFooter: jVarLocalTableFooterCreateRow })) {
         let jVarLocalFetchPostData = StartFuncLoopInputs({ jVarHtmlCardBody: jVarLocalHtmlCardBody });
         jVarLocalJsonConfigAndItemConfig.inDataToSave = jVarLocalFetchPostData;
 
@@ -95,8 +95,7 @@ let jFLocalButtonClick = ({ inEvent, inProjectName, inSubRoute }) => {
             .then(response => response.json())
             .then(dataFromApi => {
                 if (dataFromApi.KTF === true) {
-                    window.location.href =""
-
+                    window.location.href = "";
                 } else {
                     Swal.fire(dataFromApi.KReason);
                 }
