@@ -21,19 +21,22 @@ let jFLocalClickFunc = async (event) => {
     let jVarLocalInsert = jVarLocalColsestTr.querySelector('[name="Insert"]');
     let jVarLocalCreateNew = jVarLocalColsestTr.querySelector('[name="CreateNew"]');
     let jVarLocalIsTextArea = jVarLocalColsestTr.querySelector('[name="IsTextArea"]');
+    let jVarLocalEnterToServer = jVarLocalColsestTr.querySelector('[name="EnterToServer"]');
 
     let jVarLocalDisplayNameValue = jVarLocalDisplayName.value;
     let jVarLocalShowInTableValue = jVarLocalShowInTable.checked
     let jVarLocalInsertValue = jVarLocalInsert.checked
     let jVarLocalCreateNewValue = jVarLocalCreateNew.checked
     let jVarLocalIsTextAreaValue = jVarLocalIsTextArea.checked
+    let jVarLocalEnterToServerValue = jVarLocalEnterToServer.checked
 
     let BodyAsJson = {
         DisplayName: jVarLocalDisplayNameValue,
         ShowInTable: jVarLocalShowInTableValue,
         Insert: jVarLocalInsertValue,
         CreateNew: jVarLocalCreateNewValue,
-        IsTextArea: jVarLocalIsTextAreaValue
+        IsTextArea: jVarLocalIsTextAreaValue,
+        EnterToServer:jVarLocalEnterToServerValue
     }
 
     let jFetchUrl = "/JSONAdminApi/AdminApi/AsTree/Json/UserFolders/ScreensFromDisplayJson/SubTableColumns/Toggles";
